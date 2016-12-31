@@ -7,8 +7,10 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.xiaoji.ssh.service.UserService;
 
 /** 
 
@@ -34,6 +36,10 @@ public class LoginAction extends ActionSupport {
 	private String username;
 	private String password;
 	
+	@Autowired
+	private UserService userService;
+	
+	
 	public String getUsername() {
 		return username;
 	}
@@ -54,7 +60,14 @@ public class LoginAction extends ActionSupport {
 	
 	@Action(value="doLogin",results={@Result(name="success",location= "/index.jsp")})
 	public String doLogin(){
-		return SUCCESS;
+		boolean ok = userService.checkLogin(username, password);
+		if(ok){
+			return SUCCESS;
+		}else{
+			return ERROR;
+		}
+		
+		
 	}
 	
 	

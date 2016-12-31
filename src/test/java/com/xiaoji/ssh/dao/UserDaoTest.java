@@ -33,8 +33,8 @@ public class UserDaoTest {
 	@Test
 	public void testUpdateUserList(){
 		User User = new User();
-		User.setUsername("ssh3");
-		User.setPassword("ssh3");
+		User.setUsername("admin");
+		User.setPassword("123456");
 		UserDao.saveUser(User);
 		System.out.println("ok");
 	}
