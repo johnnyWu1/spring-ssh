@@ -31,7 +31,8 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="${database.driverClassName}" />
         <property name="jdbcUrl" value="${database.url}" />
-
+        <property name="password" value="${database.password}"/>
+        <property name="user" value="${database.username}"/>
         <!-- 初始化连接池中的连接数，取值应在minPoolSize与maxPoolSize之间，默认为3-->  
         <property name="initialPoolSize" value="2"/>  
         <!--最大空闲时间，60秒内未使用则连接被丢弃。若为0则永不丢弃。默认值: 0 -->   
